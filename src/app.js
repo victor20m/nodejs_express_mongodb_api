@@ -4,23 +4,27 @@ import transferRoute from './routes/transfer.js';
 import mongoose from 'mongoose';
 import loadTestData from './utilities/testData.js';
 import dropDatabase from './utilities/dropDatabase.js';
+import dbConfig from './config/database.js';
+const {URI, PORT, DB_NAME} = dbConfig;
 let app = express();
 
 
 const host = "localhost";
 const port = 7070;
 
-const db = "mongodb://localhost:27017/mydb";
+const db = `${URI}:${PORT}/${DB_NAME}`//"mongodb://localhost:27017/mydb";
 mongoose
   .connect(db, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
-  }) // Adding new mongo url parser
+  }) 
   .then(() => {
     console.log("MongoDB Connected")
-    dropDatabase()
+    dropDatabase().then(()=>{
+      
     loadTestData();
+    })
     
   })
   .catch(err => console.log(err));
