@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-// Create Schema
+
 const TransferSchema = new Schema({
   accountIdFrom: {
     type: Number,

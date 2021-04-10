@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose
-// Create Schema
+
 const BankAccountSchema = new Schema({
   accountId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     required: true,
     unique: true
   },
@@ -23,6 +23,6 @@ const BankAccountSchema = new Schema({
   }
 });
 
-const BankAccount = model('bankaccount', BankAccountSchema);
+const BankAccount = model('bank_account', BankAccountSchema);
 
 export default BankAccount;

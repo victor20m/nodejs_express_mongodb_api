@@ -2,7 +2,7 @@ import BankAccount from './BankAccount.js';
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
-// Create Schema
+
 const UserSchema = new Schema({
   name: {
     type: String,
@@ -30,6 +30,4 @@ const UserSchema = new Schema({
   }
 });
 
-const User = model('user', UserSchema);
-
-export default User;
+export default model('User', UserSchema);
