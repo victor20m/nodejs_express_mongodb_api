@@ -6,15 +6,12 @@ import loadTestData from './utilities/testData.js';
 import dropDatabase from './utilities/dropDatabase.js';
 import dbConfig from './config/database.js';
 import scheduler from './tasks/fetchCotization.js';
+import serverConfig from './config/serverConfig.js';
 
 const { URI, PORT, DB_NAME } = dbConfig;
+const {SERVER_URI, SERVER_PORT} = serverConfig;
+const db = `${URI}:${PORT}/${DB_NAME}`;
 let app = express();
-
-
-const host = "localhost";
-const port = 7070;
-
-const db = `${URI}:${PORT}/${DB_NAME}`
 
 /*
 * Data will be wiped and reloaded upon 
@@ -40,6 +37,6 @@ app.use("/transactions", transactionsRoute);
 app.use("/transfer", transferRoute);
 scheduler();
 
-app.listen(port, host, () => {
-  console.log(`Server running at http://${host}:${port}`);
+app.listen(SERVER_PORT, SERVER_URI, () => {
+  console.log(`Server running at http://${SERVER_URI}:${SERVER_PORT}`);
 });

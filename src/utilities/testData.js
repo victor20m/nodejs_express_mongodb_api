@@ -3,6 +3,7 @@ import BankAccount from '../models/BankAccount.js';
 import TransactionBatch from '../models/TransactionBatch.js';
 import Transaction from '../models/Transaction.js';
 import Currency from '../models/Currency.js';
+import Session from '../models/Session.js';
 export default () => {
 
     new Currency({
@@ -96,6 +97,20 @@ export default () => {
         })
         
     });
+
+    let expiration_date = new Date();
+    expiration_date.setHours(expiration_date.getHours() + 1)
+    new Session({
+        user_email: "test@test.com",
+        auth_token: "AiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+        expiration_date: expiration_date
+    }).save()
+
+    new Session({
+        user_email: "another@test.com",
+        auth_token: "YWdlIjoiSldUIFJ1bGVzISIsImlhdCI",
+        expiration_date: expiration_date
+    }).save()
     console.log("Test data successfully loaded.")
 }
 

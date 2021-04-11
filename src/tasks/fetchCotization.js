@@ -24,13 +24,12 @@ export default () => {
                 }
             })
             .catch((error) => {
-                console.log(error);
+                console.log(`Error retrieving cotizations:\n ${error}`);
             }));
 
     }, (err) => {
-        console.log("Error retrieving cotizations")
-    }
-    )
+        console.log(`Error running scheduler:\n ${err}`)
+    })
     const job = new SimpleIntervalJob({ seconds: 10, }, task)
     scheduler.addSimpleIntervalJob(job)
 }
