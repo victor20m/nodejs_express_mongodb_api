@@ -1,6 +1,5 @@
 import User from '../models/User.js';
 import BankAccount from '../models/BankAccount.js';
-import TransactionBatch from '../models/TransactionBatch.js';
 import Transaction from '../models/Transaction.js';
 import Currency from '../models/Currency.js';
 import Session from '../models/Session.js';
@@ -8,17 +7,20 @@ export default () => {
 
     new Currency({
         name: "Pesos Uruguayos",
-        abreviation: "UYU"
+        abreviation: "UYU",
+        rate: 52
     }).save();
     new Currency({
         name: "Euros",
-        abreviation: "EUR"
+        abreviation: "EUR",
+        rate: 1
     }).save();
     new Currency({
         name: "Dólares Americanos",
-        abreviation: "USD"
+        abreviation: "USD",
+        rate: 1.8
     }).save();
-    
+
     new User({
         name: "John",
         last_name: "Smith",
@@ -44,7 +46,7 @@ export default () => {
                     accountId: 3,
                     balance: 23066,
                     user_email: "test@test.com",
-                    currency: 'Pesos Uruguayos'
+                    currency: 'UYU'
                 }).save().then((transaction) => {
                     user.bank_accounts.push(transaction);
                     user.save();
@@ -61,14 +63,14 @@ export default () => {
     }).save().then((user) => {
 
         new BankAccount({
-            accountId: 1,
-            balance: 0,
+            accountId: 4,
+            balance: 1000,
             user_email: "another@test.com",
             currency: 'USD'
         }).save().then((transaction) => {
             user.bank_accounts.push(transaction);
             new BankAccount({
-                accountId: 2,
+                accountId: 5,
                 balance: 9000,
                 user_email: "another@test.com",
                 currency: 'EUR'
@@ -79,24 +81,14 @@ export default () => {
         })
     });
 
-    new TransactionBatch({
-        date: "10-04-2021",
-        user_email: "test@test.com"
-    }).save().then((batch) => {
-
-        new Transaction({
-            accountIdTo: 1,
-            accountIdFrom: 2,
-            amount: 100,
-            currency: 'USD',
-            date: new Date(),
-            description: "testing"
-        }).save().then((transaction)=>{
-            batch.transactions.push(transaction);
-            batch.save();
-        })
-        
-    });
+    new Transaction({
+        accountIdTo: 1,
+        accountIdFrom: 2,
+        amount: 100,
+        currency: 'USD',
+        date: new Date(),
+        description: "testing"
+    }).save()
 
     let expiration_date = new Date();
     expiration_date.setHours(expiration_date.getHours() + 1)

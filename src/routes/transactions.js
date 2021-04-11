@@ -5,7 +5,7 @@ const router = Router();
 
 router.use('/', validateToken);
 router.use('/', transactionsController)
-router.get("/", (req, res, next) => {
+router.get('/', (req, res, next) => {
     next();
 })
 

@@ -1,3 +1,5 @@
-export default (req, res, next) => {
-    
+export default (req, res) => {
+
+    console.log(req.query)
 }
+

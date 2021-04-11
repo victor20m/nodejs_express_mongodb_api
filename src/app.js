@@ -33,8 +33,8 @@ mongoose.connect(db, {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/transactions", transactionsRoute);
-app.use("/transfer", transferRoute);
+app.use("/api/transactions", transactionsRoute);
+app.use("/api/transfer", transferRoute);
 scheduler();
 
 app.listen(SERVER_PORT, SERVER_URI, () => {

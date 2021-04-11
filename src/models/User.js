@@ -1,6 +1,5 @@
 import BankAccount from './BankAccount.js';
 import mongoose from 'mongoose';
-import TransactionBatch from './TransactionBatch.js';
 const { Schema, model } = mongoose;
 
 
@@ -28,9 +27,6 @@ const UserSchema = new Schema({
   },
   bank_accounts: {
       type: [BankAccount.Schema]
-  },
-  transactions: {
-    type: [TransactionBatch.Schema]
   }
 });
 
