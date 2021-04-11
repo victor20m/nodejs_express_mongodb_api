@@ -8,7 +8,7 @@ export default (req, res, next) => {
     }
     let session = Session.findOne({'auth_token': req.header('Authorization-Token')}).then((session)=>{
         if(session){
-
+            
             next();
         }
         else{

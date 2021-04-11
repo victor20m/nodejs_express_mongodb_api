@@ -87,7 +87,34 @@ export default () => {
         amount: 100,
         currency: 'USD',
         date: new Date(),
-        description: "testing"
+        description: "John's transfer"
+    }).save();
+
+    new Transaction({
+        accountIdTo: 3,
+        accountIdFrom: 4,
+        amount: 100,
+        currency: 'USD',
+        date: new Date(),
+        description: "Jack's transfer"
+    }).save()
+
+    new Transaction({
+        accountIdTo: 3,
+        accountIdFrom: 4,
+        amount: 100,
+        currency: 'USD',
+        date: new Date("9-10-2020"),
+        description: "Jack's transfer"
+    }).save()
+
+    new Transaction({
+        accountIdTo: 3,
+        accountIdFrom: 5,
+        amount: 50,
+        currency: 'USD',
+        date: new Date(),
+        description: "Jack's transfer 2"
     }).save()
 
     let expiration_date = new Date();
