@@ -1,7 +1,8 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
+const { Schema, model } = mongoose;
 
 
-const TransferSchema = new Schema({
+const TransactionSchema = new Schema({
   accountIdFrom: {
     type: Number,
     required: true,
@@ -27,6 +28,6 @@ const TransferSchema = new Schema({
   }
 });
 
-const Transfer = model('transfer', TransferSchema);
+const Transaction = model('Transaction', TransactionSchema);
 
-export default Transfer;
+export default Transaction;

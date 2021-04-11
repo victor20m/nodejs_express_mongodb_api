@@ -23,6 +23,6 @@ const BankAccountSchema = new Schema({
   }
 });
 
-const BankAccount = model('bank_account', BankAccountSchema);
+const BankAccount = model('Bank_Account', BankAccountSchema);
 
 export default BankAccount;
