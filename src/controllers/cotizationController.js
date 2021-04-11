@@ -12,12 +12,8 @@ export default {
 
         const cursor = Currency.find().cursor();
         for (let currencyDoc = await cursor.next(); currencyDoc != null; currencyDoc = await cursor.next()) {
-            updateCurrency(currencyDoc.abreviation, body.rates);
+
+            await currencyDoc.updateOne({rate: body.rates[currencyDoc.abreviation]})
         }
-
     }
-}
-
-async function updateCurrency(abreviation, rates) {
-    await Currency.findOneAndUpdate({ abreviation: abreviation }, { rate: rates[abreviation] });
 }

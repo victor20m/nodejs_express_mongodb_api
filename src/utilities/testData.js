@@ -17,6 +17,7 @@ export default () => {
         name: "Dólares Americanos",
         abreviation: "USD"
     }).save();
+    
     new User({
         name: "John",
         last_name: "Smith",
